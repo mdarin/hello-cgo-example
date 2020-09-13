@@ -46,6 +46,7 @@ func main() {
 	fmt.Println("random:", Random())
 	CPrint("hello2")
 
+
 	// declare variables
 	// glp_prob *lp;
 	var lp *C.glp_prob
@@ -53,7 +54,10 @@ func main() {
 	// create problem
 	// lp = glp_create_prob();
 	lp = C.glp_create_prob()
+	// A common idiom in cgo programs is to defer the free immediately after allocating
+	defer C.glp_delete_prob(lp)
 	lp_name := C.CString("short")
+	// A common idiom in cgo programs is to defer the free immediately after allocating
 	defer C.free(unsafe.Pointer(lp_name))
 
 	C.glp_set_prob_name(lp, lp_name)
