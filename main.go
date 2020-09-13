@@ -16,6 +16,8 @@ import (
 	"fmt"
 )
 
+/* GNU GLPK linear/mixed integer solver */
+
 const ()
 
 var ()
